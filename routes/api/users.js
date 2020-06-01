@@ -3,6 +3,7 @@ const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+const passport = require("passport");
 
 const router = express.Router();
 
@@ -72,4 +73,16 @@ router.post("/login", (request, response) => {
     });
   });
 });
+
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (request, response) => {
+    response.json({
+      id: request.user.id,
+      name: request.user.name,
+      email: request.user.email,
+    });
+  }
+);
 module.exports = router;
