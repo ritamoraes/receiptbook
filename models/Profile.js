@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema({
   user: {
-    type: Schema.type.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "users",
   },
   handle: {
@@ -38,7 +38,7 @@ const ProfileSchema = new Schema({
   experience: [
     {
       title: {
-        type: string,
+        type: String,
         required: true,
       },
       company: {
@@ -67,7 +67,7 @@ const ProfileSchema = new Schema({
   education: [
     {
       school: {
-        type: string,
+        type: String,
         required: true,
       },
       degree: {
